@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #000306; /* Uzay mavisi */
+  min-height: 100vh;
+}

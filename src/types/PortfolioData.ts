@@ -1,8 +1,8 @@
-import type { PersonalInfo, Project, Skill, Education } from "./person";
+import type { PersonalInfo, Project, Skill, Education } from "./Person";
 
 export type PortfolioData = {
-    personalInfo: PersonalInfo;
-    education: Education[];
-    skills: Skill[];
-    projects: Project[];
-}
+  personalInfo: PersonalInfo;
+  education: Education[];
+  skills: Skill[];
+  projects: Project[];
+};
