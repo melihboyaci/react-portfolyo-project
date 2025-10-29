@@ -1,29 +1,41 @@
+// src/components/Header.tsx
+
 import {
   Navbar,
   NavbarBrand,
-  NavbarLink,
   NavbarCollapse,
   NavbarToggle,
 } from "flowbite-react";
+import { NavLink } from "react-router-dom";
 
 import { portfolioData } from "../data/data";
-import {
-  HiUser,
-  HiBriefcase,
-  HiAcademicCap,
-  HiCode,
-  HiMail,
-} from "react-icons/hi";
+import { HiUser, HiBriefcase, HiAcademicCap, HiCode } from "react-icons/hi";
 
 export const Header = () => {
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    [
+      "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+      isActive
+        ? "text-blue-600 dark:text-blue-400"
+        : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700",
+    ].join(" ");
+
   return (
     <Navbar fluid rounded className="bg-white dark:bg-gray-800 shadow-md">
       <NavbarBrand>
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-xl">
-              {portfolioData.name.charAt(0)}
-            </span>
+          <div className="w-10 h-10 rounded-lg overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+            {portfolioData.imageUrl ? (
+              <img
+                src={portfolioData.imageUrl}
+                alt={`${portfolioData.name} profil resmi`}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span className="text-white font-bold text-xl">
+                {portfolioData.name.charAt(0)}
+              </span>
+            )}
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-bold dark:text-white">
@@ -37,26 +49,24 @@ export const Header = () => {
       </NavbarBrand>
       <NavbarToggle />
       <NavbarCollapse>
-        <NavbarLink href="#about" className="flex items-center gap-2">
+        <NavLink to="/" className={navLinkClass} end>
           <HiUser className="text-lg" />
-          <span>About</span>
-        </NavbarLink>
-        <NavbarLink href="#education" className="flex items-center gap-2">
+          <span>Hakkımda</span>
+        </NavLink>
+        <NavLink to="/tecrubelerim" className={navLinkClass}>
           <HiAcademicCap className="text-lg" />
-          <span>Education</span>
-        </NavbarLink>
-        <NavbarLink href="#skills" className="flex items-center gap-2">
+          <span>Tecrübelerim</span>
+        </NavLink>
+
+        <NavLink to="/yeteneklerim" className={navLinkClass}>
           <HiCode className="text-lg" />
-          <span>Skills</span>
-        </NavbarLink>
-        <NavbarLink href="#projects" className="flex items-center gap-2">
+          <span>Yeteneklerim</span>
+        </NavLink>
+
+        <NavLink to="/projelerim" className={navLinkClass}>
           <HiBriefcase className="text-lg" />
-          <span>Projects</span>
-        </NavbarLink>
-        <NavbarLink href="#contact" className="flex items-center gap-2">
-          <HiMail className="text-lg" />
-          <span>Contact</span>
-        </NavbarLink>
+          <span>Projelerim</span>
+        </NavLink>
       </NavbarCollapse>
     </Navbar>
   );

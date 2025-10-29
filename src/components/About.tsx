@@ -21,7 +21,7 @@ const About = () => {
           </h5>
           <br />
           <h2 className="mb-1 text-lg font-medium text-white">
-            Frontend Developer
+            <span className="text-indigo-400">{portfolioData.job}</span>
           </h2>
           <div className="mt-4 space-y-4 flex flex-col items-center">
             <div className="flex items-center gap-2 text-gray-300">

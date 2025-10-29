@@ -5,28 +5,19 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Skill from "./components/Skill";
 import Projects from "./components/Projects";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <div className="min-h-screen bg-blue-950">
-      <div></div>
-      <div>
-        <About />
-      </div>
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div>
-            <Experience />
-          </div>
-          <div>
-            <Skill />
-          </div>
-          <div>
-            <Projects />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<About />} />
+        <Route path="tecrubelerim" element={<Experience />} />
+        <Route path="yeteneklerim" element={<Skill />} />
+        <Route path="projelerim" element={<Projects />} />
+      </Route>
+    </Routes>
   );
 }
 
